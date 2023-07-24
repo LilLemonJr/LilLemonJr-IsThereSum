@@ -1,4 +1,4 @@
-
+import java.util.HashSet;
 public class IsThereSum {
     /**
      * Check if there exist two numbers in an array add up to some other number.
@@ -10,6 +10,14 @@ public class IsThereSum {
      * @return true if two separate values in the array add up to a target, false otherwise.
      */
     public boolean check(int[] arr, int target){
+        HashSet<Integer> set = new HashSet<>();
+        for (int num : arr) {
+            int complement = target - num;
+            if (set.contains(complement)) {
+                return true;
+            }
+            set.add(num);
+        }
         return false;
     }
 }
